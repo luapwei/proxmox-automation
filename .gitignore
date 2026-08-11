@@ -22,6 +22,9 @@ override.tf.json
 *_override.tf
 *_override.tf.json
 
+# Lokaler Cache
+**/.terraform/*
+
 # CLI-Konfiguration
 .terraformrc
 terraform.rc
