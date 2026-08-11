@@ -1,27 +1,27 @@
-# IntelliJ
+# IDE
 .idea
 
-# Lokalen Cache-Ordner ignorieren (wird durch terraform init neu erzeugt)
-terraform/.terraform/
+# Local cache
+**/.terraform/
 
-# Crash-Logs ignorieren
+# Logs
 crash.log
 crash.*.log
 
-# Lokale Zustandsdateien ignorieren (enthält sensible Daten im Klartext!)
+# Lokaler State
 *.tfstate
 *.tfstate.*
 
-# Terraform-Variablendateien ignorieren (falls du mal Passwörter in *.tfvars testest)
+# Variablendateien
 *.tfvars
 *.tfvars.json
 
-# Override-Dateien ignorieren
+# Override-Dateien
 override.tf
 override.tf.json
 *_override.tf
 *_override.tf.json
 
-# CLI-Konfigurationen ignorieren
+# CLI-Konfiguration
 .terraformrc
 terraform.rc
