@@ -1,0 +1,43 @@
+# Kopiere nach terraform.tfvars und fuelle aus. terraform.tfvars NICHT committen.
+
+# --- Proxmox ---
+pve_endpoint     = "https://pve01.homelab.local:8006/"
+pve_api_token    = "terraform@pve!tf=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+pve_insecure     = true
+pve_ssh_username = "root"
+node_name        = "pve01"
+
+# --- Storage ---
+datastore_id         = "local-lvm"
+snippet_datastore_id = "local"
+image_file_id        = "local:import/rhel-9.8-x86_64-kvm.qcow2"
+
+# --- VM ---
+vm_id        = 931
+vm_name      = "rhel9-cis01"
+vm_cpu       = 2
+vm_memory    = 2048
+vm_disk_size = 40
+
+# --- Netzwerk (Beispiel: statische IP wie deine .31) ---
+use_dhcp     = false
+ipv4_address = "192.168.10.31/24"
+ipv4_gateway = "192.168.10.1"
+dns_servers  = ["192.168.10.1"]
+# vlan_id    = 10
+
+# --- ansible-User ---
+# Inhalt deiner .pub-Datei, eine Zeile:
+ansible_ssh_public_key = "ssh-ed25519 AAAA... ansible@homelab"
+# Erzeugen mit:  openssl passwd -6
+ansible_password_hash = "$6$....."
+
+# --- Red Hat Subscription ---
+# Bevorzugt Activation Key (kein Passwort im Image):
+rhsm_org_id         = "12345678"
+rhsm_activation_key = "rhel9-cis-lab"
+# Fallback, falls dein Konto keine Activation Keys hat: dann obige zwei leer lassen
+# rhsm_username = "deine-rh-id"
+# rhsm_password = "..."
+
+timezone = "Europe/Berlin"

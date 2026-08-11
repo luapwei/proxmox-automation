@@ -1,0 +1,48 @@
+#cloud-config
+hostname: ${hostname}
+fqdn: ${hostname}.homelab.local
+preserve_hostname: false
+timezone: ${timezone}
+
+# Nur Key-basierter SSH-Login. CIS haertet sshd spaeter weiter.
+ssh_pwauth: false
+
+users:
+  - name: ansible
+    gecos: "Ansible Automation"
+    groups: [wheel]
+    shell: /bin/bash
+    lock_passwd: false
+    # Passwort-Hash bewusst gesetzt, KEIN NOPASSWD-sudo:
+    # spiegelt die Baseline, in der CIS 5.2.x Re-Auth erzwingt.
+    # ansible durchgaengig mit -K fahren.
+    passwd: "${ansible_password_hash}"
+    ssh_authorized_keys:
+      - "${ansible_ssh_public_key}"
+
+# rh_subscription laeuft in cloud-init VOR der Paketinstallation,
+# damit die Repos verfuegbar sind.
+%{ if rhsm_activation_key != "" ~}
+rh_subscription:
+  activation-key: "${rhsm_activation_key}"
+  org: "${rhsm_org_id}"
+  auto-attach: true
+%{ else ~}
+rh_subscription:
+  username: "${rhsm_username}"
+  password: "${rhsm_password}"
+  auto-attach: true
+%{ endif ~}
+
+packages:
+  - qemu-guest-agent
+
+package_update: true
+# Fuer reproduzierbare Messungen bewusst KEIN Upgrade beim Boot.
+# Den State pinnst du und snapshottest die VM vor den Messlaeufen.
+package_upgrade: false
+
+runcmd:
+  - [ systemctl, enable, --now, qemu-guest-agent ]
+
+final_message: "cloud-init fertig: RHEL 9 CIS-Lab-Baseline nach $UPTIME s bereit"
