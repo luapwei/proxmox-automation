@@ -5,8 +5,8 @@ Infrastructure as Code für mein Homelab: Terraform provisioniert LXC-Container 
 - **01_debian_lxc:** Debian-LXC per Terraform
 - **02_alma_vm:** AlmaLinux-9-VM aus Cloud-Init-Template
 - **03_rhel_vm:** RHEL-9-VM mit Cloud-Init, Ansible-User und Red-Hat-Subscription, Basis für das Lab meiner Bachelorarbeit (CIS-Härtung)
-- **Ansible:** Inventory und Patch-Playbook für die Debian-Hosts
-
+- **Ansible:** Inventory und Patch-Playbooks für Debian- und RHEL-Hosts
+  
 Secrets werden nie committet: Zugangsdaten kommen über Umgebungsvariablen oder eine lokale terraform.tfvars, die per .gitignore ausgeschlossen ist.
 
 ## Authentifizierung (fuer alle Terraform-Ordner)
