@@ -10,3 +10,9 @@ all:
           ansible_host: 192.168.178.12
         mc01:
           ansible_host: 192.168.178.17
+    rhel:
+      hosts:
+        wazuh01:
+          ansible_host: 192.168.178.15
+      vars:
+        ansible_user: ansible
