@@ -28,3 +28,6 @@ override.tf.json
 # CLI-Konfiguration
 .terraformrc
 terraform.rc
+
+# Ansible-Inventory mit echten Hosts (Vorlage: homelab.yml.example)
+ansible/inventories/homelab.yml

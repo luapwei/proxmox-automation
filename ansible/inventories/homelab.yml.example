@@ -1,0 +1,16 @@
+# Beispiel-Inventory. Kopieren nach homelab.yml und an die eigene Umgebung anpassen.
+# homelab.yml ist per .gitignore vom Repo ausgeschlossen.
+all:
+  children:
+    debian:
+      hosts:
+        debian01:
+          ansible_host: 192.0.2.11
+        debian02:
+          ansible_host: 192.0.2.12
+    rhel:
+      hosts:
+        rhel01:
+          ansible_host: 192.0.2.21
+      vars:
+        ansible_user: ansible
