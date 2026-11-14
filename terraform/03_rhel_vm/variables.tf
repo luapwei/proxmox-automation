@@ -18,7 +18,7 @@ variable "pve_insecure" {
 
 variable "pve_ssh_username" {
   type        = string
-  description = "SSH-User auf dem Proxmox-Node fuer bpg (Snippet-Upload / Disk-Import)"
+  description = "SSH-User auf dem Proxmox-Node für bpg (Snippet-Upload / Disk-Import)"
   default     = "root"
 }
 
@@ -30,7 +30,7 @@ variable "node_name" {
 # ---------- Storage ----------
 variable "datastore_id" {
   type        = string
-  description = "Datastore fuer VM-Disk und cloud-init-Drive, z.B. local-lvm"
+  description = "Datastore für VM-Disk und cloud-init-Drive, z.B. local-lvm"
   default     = "local-lvm"
 }
 
@@ -71,7 +71,7 @@ variable "vm_memory" {
 
 variable "vm_disk_size" {
   type        = number
-  description = "Disk-Groesse in GB (qcow2 waechst per growpart hoch)"
+  description = "Disk-Größe in GB (qcow2 wächst per growpart hoch)"
   default     = 40
 }
 
@@ -123,10 +123,10 @@ variable "ansible_password_hash" {
 
 # ---------- Red Hat Subscription ----------
 # Bevorzugt: Activation Key + Org (kein Passwort im Image).
-# Fallback: Username/Passwort, falls dein Konto keine Activation Keys anbietet.
+# Fallback: Username/Passwort, falls das Konto keine Activation Keys anbietet.
 variable "rhsm_org_id" {
   type        = string
-  description = "Red Hat Org-ID (fuer Activation Key)"
+  description = "Red Hat Org-ID (für Activation Key)"
   default     = ""
 }
 

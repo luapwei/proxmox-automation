@@ -26,7 +26,7 @@ resource "proxmox_virtual_environment_vm" "rhel9" {
   vm_id     = var.vm_id
   tags      = ["terraform", "rhel9", "cis-lab"]
 
-  # Guest-Agent an, damit Terraform die IP zurueckliest.
+  # Guest-Agent an, damit Terraform die IP zurückliest.
   agent {
     enabled = true
   }

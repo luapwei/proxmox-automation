@@ -1,4 +1,4 @@
-# Kopiere nach terraform.tfvars und fuelle aus. terraform.tfvars NICHT committen.
+# Nach terraform.tfvars kopieren und ausfüllen. terraform.tfvars NICHT committen.
 
 # --- Proxmox ---
 pve_endpoint     = "https://pve01.homelab.local:8006/"
@@ -19,7 +19,7 @@ vm_cpu       = 2
 vm_memory    = 2048
 vm_disk_size = 40
 
-# --- Netzwerk (Beispiel: statische IP wie deine .31) ---
+# --- Netzwerk (Beispiel: statische IP) ---
 use_dhcp     = false
 ipv4_address = "192.168.10.31/24"
 ipv4_gateway = "192.168.10.1"
@@ -27,7 +27,7 @@ dns_servers  = ["192.168.10.1"]
 # vlan_id    = 10
 
 # --- ansible-User ---
-# Inhalt deiner .pub-Datei, eine Zeile:
+# Inhalt der .pub-Datei, eine Zeile:
 ansible_ssh_public_key = "ssh-ed25519 AAAA... ansible@homelab"
 # Erzeugen mit:  openssl passwd -6
 ansible_password_hash = "$6$....."
@@ -36,8 +36,8 @@ ansible_password_hash = "$6$....."
 # Bevorzugt Activation Key (kein Passwort im Image):
 rhsm_org_id         = "12345678"
 rhsm_activation_key = "rhel9-cis-lab"
-# Fallback, falls dein Konto keine Activation Keys hat: dann obige zwei leer lassen
-# rhsm_username = "deine-rh-id"
+# Fallback, falls das Konto keine Activation Keys hat: dann die beiden Werte oben leer lassen
+# rhsm_username = "rh-benutzername"
 # rhsm_password = "..."
 
 timezone = "Europe/Berlin"
