@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #
 # Erstellt einmalig ein AlmaLinux-9-Cloud-Init-Template in Proxmox.
-# Direkt AUF DEM PROXMOX-HOST ausfuehren (benoetigt `qm`, `wget`).
+# Direkt AUF DEM PROXMOX-HOST ausführen (benötigt `qm`, `wget`).
 #
 # Danach kann Terraform aus diesem Template klonen:
 #   terraform apply
@@ -18,8 +18,8 @@ IMAGE_FILE="/tmp/AlmaLinux-9-GenericCloud-latest.x86_64.qcow2"
 # ----------------------------------------------------
 
 if qm status "${TEMPLATE_VMID}" >/dev/null 2>&1; then
-  echo "VMID ${TEMPLATE_VMID} existiert bereits. Abbruch, um nichts zu ueberschreiben."
-  echo "Vorhandenes Template loeschen mit: qm destroy ${TEMPLATE_VMID}"
+  echo "VMID ${TEMPLATE_VMID} existiert bereits. Abbruch, um nichts zu überschreiben."
+  echo "Vorhandenes Template löschen mit: qm destroy ${TEMPLATE_VMID}"
   exit 1
 fi
 
@@ -39,10 +39,10 @@ qm create "${TEMPLATE_VMID}" \
 echo ">> Importiere Disk-Image nach ${STORAGE}..."
 qm importdisk "${TEMPLATE_VMID}" "${IMAGE_FILE}" "${STORAGE}"
 
-echo ">> Haenge Disk als scsi0 an..."
+echo ">> Hänge Disk als scsi0 an..."
 qm set "${TEMPLATE_VMID}" --scsi0 "${STORAGE}:vm-${TEMPLATE_VMID}-disk-0"
 
-echo ">> Fuege Cloud-Init-Laufwerk und Boot-Reihenfolge hinzu..."
+echo ">> Füge Cloud-Init-Laufwerk und Boot-Reihenfolge hinzu..."
 qm set "${TEMPLATE_VMID}" --ide2 "${STORAGE}:cloudinit"
 qm set "${TEMPLATE_VMID}" --boot order=scsi0
 qm set "${TEMPLATE_VMID}" --serial0 socket --vga serial0
