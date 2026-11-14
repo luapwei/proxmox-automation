@@ -21,9 +21,9 @@ vm_disk_size = 40
 
 # --- Netzwerk (Beispiel: statische IP) ---
 use_dhcp     = false
-ipv4_address = "192.168.10.31/24"
-ipv4_gateway = "192.168.10.1"
-dns_servers  = ["192.168.10.1"]
+ipv4_address = "192.168.178.32/24"
+ipv4_gateway = "192.168.178.1"
+dns_servers  = ["192.168.178.1"]
 # vlan_id    = 10
 
 # --- ansible-User ---

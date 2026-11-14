@@ -94,7 +94,7 @@ variable "use_dhcp" {
 
 variable "ipv4_address" {
   type        = string
-  description = "Statische IP mit CIDR, z.B. 192.168.10.31/24 (nur wenn use_dhcp=false)"
+  description = "Statische IP mit CIDR, z.B. 192.168.178.32/24 (nur wenn use_dhcp=false)"
   default     = null
 }
 
@@ -106,7 +106,7 @@ variable "ipv4_gateway" {
 
 variable "dns_servers" {
   type    = list(string)
-  default = ["192.168.10.1"]
+  default = ["192.168.178.1"]
 }
 
 # ---------- ansible-User ----------
