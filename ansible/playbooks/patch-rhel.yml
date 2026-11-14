@@ -1,15 +1,15 @@
 ---
-- name: Patch RHEL Hosts
+- name: Patch RHEL hosts
   hosts: rhel
   become: true
   serial: 1
   tasks:
-    - name: dnf-utils sicherstellen
+    - name: Ensure dnf-utils is installed
       ansible.builtin.dnf:
         name: dnf-utils
         state: present
 
-    - name: Updates einspielen
+    - name: Upgrade all packages
       ansible.builtin.dnf:
         name: "*"
         state: latest
@@ -19,7 +19,7 @@
       ansible.builtin.command: needs-restarting -r
       register: reboot_required
       changed_when: false
-      failed_when: false
+      failed_when: reboot_required.rc not in [0, 1]
 
     - name: Reboot if needed
       ansible.builtin.reboot:
