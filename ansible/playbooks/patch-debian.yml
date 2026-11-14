@@ -9,7 +9,6 @@
     - name: Update apt cache
       ansible.builtin.apt:
         update_cache: yes
-        cache_valid_time: 0
 
     - name: Upgrade all packages (dist-upgrade)
       ansible.builtin.apt:
@@ -25,7 +24,7 @@
 
     - name: Reboot if needed
       ansible.builtin.reboot:
-        msg: "Reboot triggered by ansible patch run!"
+        msg: "Reboot triggered by ansible patch run"
         connect_timeout: 5
         reboot_timeout: 300
         pre_reboot_delay: 5
